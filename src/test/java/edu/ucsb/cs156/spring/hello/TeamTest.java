@@ -45,6 +45,32 @@ public class TeamTest {
         team3.addMember("Bob");
         assert(team.equals(team3) == false);
     }
+    @Test
+    public void equals_name_diff_members_same() {
+        Team t1 = new Team();
+        t1.setName("team-a");
+        t1.addMember("Alice");
+
+        Team t2 = new Team();
+        t2.setName("team-b"); // different name
+        t2.addMember("Alice"); // same members
+
+        assert(!t1.equals(t2));
+    }
+    @Test
+    public void equals_name_same_members_diff() {
+        Team t1 = new Team();
+        t1.setName("team-a");
+        t1.addMember("Alice");
+
+        Team t2 = new Team();
+        t2.setName("team-a"); // same name
+        t2.addMember("Bob"); // different member
+
+        assert(!t1.equals(t2));
+    }
+
+
 
     @Test
     public void hashCode_returns_correct_values() {
